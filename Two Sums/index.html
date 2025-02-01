@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Sums</title>
+</head>
+
+<body>
+    Two sums
+    <script>
+        /**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+        var twoSum = function (nums, target) {
+            let numIndices = {}; // Object to store numbers and their indices
+
+            for (let i = 0; i < nums.length; i++) {
+                let complement = target - nums[i]; // Find the number needed to reach the target
+
+                // Check if we have already seen the complement
+                if (numIndices.hasOwnProperty(complement)) {
+                    return [numIndices[complement], i]; // Return the indices of the two numbers
+                }
+
+                // Store the current number and its index
+                numIndices[nums[i]] = i;
+            }
+
+            return []; // This won't be reached since we are guaranteed a solution
+        };
+
+        // Example usage:
+        let nums = [2, 7, 11, 15];
+        let target = 9;
+        console.log(twoSum(nums, target)); // Output: [0, 1]
+
+    </script>
+</body>
+
+</html>
