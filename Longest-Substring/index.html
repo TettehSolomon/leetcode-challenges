@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest Substring</title>
+</head>
+
+<body>
+    The Longest Substring
+    <script>
+        /**
+ * @param {string} s
+ * @return {number}
+ */
+        var lengthOfLongestSubstring = function (s) {
+            let charSet = new Set(); // Set to store unique characters
+            let start = 0; // Start pointer of the window
+            let maxLength = 0; // Maximum length of substring found
+
+            for (let end = 0; end < s.length; end++) {
+                // If the character is already in the set, shrink the window
+                while (charSet.has(s[end])) {
+                    charSet.delete(s[start]);
+                    start++;
+                }
+
+                // Add the current character to the set
+                charSet.add(s[end]);
+
+                // Update the maximum length of substring
+                maxLength = Math.max(maxLength, end - start + 1);
+            }
+
+            return maxLength;
+        };
+
+    </script>
+</body>
+
+</html>
